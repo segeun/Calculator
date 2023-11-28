@@ -130,7 +130,7 @@ struct MainView: View {
                 displayNumber = "\(displayNumber)."
             }
         default:
-            // 기존 코드
+            // 기존 코드 -> 바뀐 과정 기록해야 됨
             //            let number = button.rawValue
             //            if displayNumber == "0" {
 //                displayNumber = number
