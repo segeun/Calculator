@@ -143,7 +143,7 @@ struct MainView: View {
             if shouldClearDisplay || displayNumber == "0" {
                 displayNumber = number
                 shouldClearDisplay = false
-            } else {  // shouldClearDisplay가 false라면 displayNumber에 숫자를 추가합니다.
+            } else {  // shouldClearDisplay가 false라면 displayNumber에 숫자를 추가한다.
                 displayNumber = "\(displayNumber)\(number)"
             }
         }
