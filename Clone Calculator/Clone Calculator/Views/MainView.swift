@@ -46,7 +46,7 @@ struct MainView: View {
                                     .font(.system(size: 40) .bold())
                                     .frame(width: buttonWidth(item: item), height: buttonHeight())
                                     .background(item.buttonColor)
-                                    // clipShape 와 rect의 활용에 대해서 다시 검토
+                                    // clipShape 와 rect의 활용에 대해서 다시 공부
                                     .clipShape(.rect(cornerRadius: buttonWidth(item: item) / 2))
                                     .foregroundColor(item.foregroundColors)
                             }
