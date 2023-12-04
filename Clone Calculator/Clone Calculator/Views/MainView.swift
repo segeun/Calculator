@@ -10,10 +10,11 @@ import SwiftUI
 struct MainView: View {
     
     @State private var displayNumber: String = "0"
-    @State private var computeNumber: Int = 0
+    @State private var computeNumber: Double = 0
     @State private var currentOperator: Operation = .none
     @State private var shouldClearDisplay: Bool = false
-    
+    @State private var history: [String] = []
+
     private let buttons: [[CalculatorButtons]] = [
         [.clear, .negative, .percent, .divide],
         [.seven, .eight, .nine, .multiply],
@@ -27,6 +28,13 @@ struct MainView: View {
             Color.black.edgesIgnoringSafeArea(.all)
             VStack {
                 Spacer()
+                HStack {
+                    ForEach(history, id: \.self) { item in
+                        Text(item)
+                            .font(.system(size: 15))
+                            .foregroundColor(.white)
+                    }
+                }
                 HStack {
                     Spacer()
                     Text("\(displayNumber)")
@@ -72,51 +80,58 @@ struct MainView: View {
     func calculate(button: CalculatorButtons) {
         switch button {
         case .add, .subtract, .multiply, .divide, .equal:
+            history.append(button.rawValue)
             if button == .add {
                 currentOperator = .add
-                computeNumber = Int(displayNumber) ?? 0
+                computeNumber = Double(displayNumber) ?? 0.0
             } else if button == .subtract {
                 currentOperator = .subtract
-                computeNumber = Int(displayNumber) ?? 0
+                computeNumber = Double(displayNumber) ?? 0.0
             } else if button == .divide {
                 currentOperator = .divide
-                computeNumber = Int(displayNumber) ?? 0
+                computeNumber = Double(displayNumber) ?? 0.0
             } else if button == .multiply {
                 currentOperator = .multiply
-                computeNumber = Int(displayNumber) ?? 0
+                computeNumber = Double(displayNumber) ?? 0.0
             } else if button == .equal {
-                let runningNumber = Double(computeNumber)
-                let currentNumber = Double(displayNumber) ?? 0
-                
+                let runningNumber = computeNumber
+                let currentNumber = Double(displayNumber) ?? 0.0
+                                
                 let numberFormatter = NumberFormatter()
                 numberFormatter.minimumFractionDigits = 0
                 numberFormatter.maximumFractionDigits = 5
                 
                 shouldClearDisplay = true
                 
+                print("\(currentNumber)")
+                
                 switch self.currentOperator {
                 case .add:
-                    displayNumber = "\(Int(runningNumber + currentNumber))"
+                    displayNumber = "\(runningNumber + currentNumber)"
                 case .subtract:
-                    displayNumber = "\(Int(runningNumber - currentNumber))"
+                    displayNumber = "\(runningNumber - currentNumber)"
                 case .divide:
                     let result = runningNumber / currentNumber
                     if floor(result) == result {
-                        displayNumber = "\(Int(result))"
+                        displayNumber = "\(result)"
                     } else {
                         displayNumber = numberFormatter.string(from: NSNumber(value: result)) ?? "0"
                     }
                 case .multiply:
-                    displayNumber = "\(Int(runningNumber * currentNumber))"
+                    displayNumber = "\(runningNumber * currentNumber)"
                 case .none:
                     break
                 }
+                history.append(displayNumber)
+
             }
             if button != .equal {
                 shouldClearDisplay = true
             }
         case .clear:
             displayNumber = "0"
+            computeNumber = 0
+            history = []
         case .negative:
             if let number = Int(displayNumber) {
                 displayNumber = "\(-number)"  // 현재 displayNumber의 부호를 바꾸는 식
@@ -124,12 +139,14 @@ struct MainView: View {
         case .percent:
             if let number = Double(displayNumber) {
                 displayNumber = String(format: "%.2f", number / 100)
+                print("\(displayNumber)")
             }
         case .decimal:
             if !displayNumber.contains(".") {
                 displayNumber = "\(displayNumber)."
             }
         default:
+            history.append(button.rawValue)
             // 기존 코드 -> 바뀐 과정 기록해야 됨
             //            let number = button.rawValue
             //            if displayNumber == "0" {
@@ -146,6 +163,9 @@ struct MainView: View {
             } else {  // shouldClearDisplay가 false라면 displayNumber에 숫자를 추가한다.
                 displayNumber = "\(displayNumber)\(number)"
             }
+        }
+        if displayNumber.hasSuffix(".0") {
+            displayNumber = String(displayNumber.dropLast(2))
         }
     }
 }
