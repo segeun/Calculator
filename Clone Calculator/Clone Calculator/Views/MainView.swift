@@ -149,21 +149,21 @@ struct MainView: View {
         default:
             history.append(button.rawValue)
             // 기존 코드 -> 바뀐 과정 기록해야 됨
-                        let number = button.rawValue
-                        if displayNumber == "0" {
-                displayNumber = number
-                shouldClearDisplay = false
-            } else {
-                displayNumber = "\(displayNumber)\(number)"
-            }
-            // 수정 코드
-//            let number = button.rawValue
-//            if shouldClearDisplay || displayNumber == "0" {
+            //            let number = button.rawValue
+            //            if displayNumber == "0" {
 //                displayNumber = number
 //                shouldClearDisplay = false
-//            } else {  // shouldClearDisplay가 false라면 displayNumber에 숫자를 추가한다.
+//            } else {
 //                displayNumber = "\(displayNumber)\(number)"
 //            }
+            // 수정 코드
+            let number = button.rawValue
+            if shouldClearDisplay || displayNumber == "0" {
+                displayNumber = number
+                shouldClearDisplay = false
+            } else {  // shouldClearDisplay가 false라면 displayNumber에 숫자를 추가한다.
+                displayNumber = "\(displayNumber)\(number)"
+            }
         }
         if displayNumber.hasSuffix(".0") {
             displayNumber = String(displayNumber.dropLast(2))

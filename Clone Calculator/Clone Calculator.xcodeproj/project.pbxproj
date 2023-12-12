@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E3FE51812B1502EB00CC7691 /* Clone_CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE51802B1502EB00CC7691 /* Clone_CalculatorApp.swift */; };
-		E3FE51832B1502EB00CC7691 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE51822B1502EB00CC7691 /* ContentView.swift */; };
 		E3FE51852B1502EF00CC7691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FE51842B1502EF00CC7691 /* Assets.xcassets */; };
 		E3FE51882B1502EF00CC7691 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FE51872B1502EF00CC7691 /* Preview Assets.xcassets */; };
 		E3FE51902B15035800CC7691 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE518F2B15035800CC7691 /* MainView.swift */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		E3FE517D2B1502EA00CC7691 /* Clone Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Clone Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FE51802B1502EB00CC7691 /* Clone_CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clone_CalculatorApp.swift; sourceTree = "<group>"; };
-		E3FE51822B1502EB00CC7691 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E3FE51842B1502EF00CC7691 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3FE51872B1502EF00CC7691 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E3FE518F2B15035800CC7691 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				E3FE51802B1502EB00CC7691 /* Clone_CalculatorApp.swift */,
-				E3FE51822B1502EB00CC7691 /* ContentView.swift */,
 				E3FE51912B1505E700CC7691 /* Model */,
 				E3FE518E2B15033A00CC7691 /* Views */,
 				E3FE51842B1502EF00CC7691 /* Assets.xcassets */,
@@ -159,7 +156,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3FE51832B1502EB00CC7691 /* ContentView.swift in Sources */,
 				E3FE51902B15035800CC7691 /* MainView.swift in Sources */,
 				E3FE51812B1502EB00CC7691 /* Clone_CalculatorApp.swift in Sources */,
 				E3FE51932B15062200CC7691 /* CalculatorButtons.swift in Sources */,
