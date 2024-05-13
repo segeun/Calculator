@@ -33,17 +33,25 @@ enum CalculatorButtons: String {
         case .add, .subtract, .divide, .multiply, .equal:
             return .orange
         case .clear, .negative, .percent:
+//            return Color(.lightGray)
             return Color(.lightGray)
+
         default:
+//            return Color(.darkGray)
             return Color(.darkGray)
+
         }
     }
     var foregroundColors: Color {
         switch self {
         case .clear, .negative, .percent:
+//            return Color(.black)
             return Color(.black)
+
         default:
+//            return Color(.white)
             return Color(.white)
+
         }
     }
 }
